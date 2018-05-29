@@ -17,6 +17,9 @@ class ReportageController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/", name="home")
+     */
     public function home()
     {
         return $this->render('reportage/home.html.twig');
