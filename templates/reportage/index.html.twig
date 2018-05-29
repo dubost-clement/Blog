@@ -3,18 +3,18 @@
 {% block title %}Hello {{ controller_name }}!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<section class="reportages">
+    {% for reportage in reportages %}
+        <article>
+            <h2>{{ reportage.title }}</h2>
+            <div class="metadata">Écrit le {{ reportage.createdAt | date('d/m/Y') }} à {{ reportage.createdAt | date('H:i') }}</div>
+            <div class="content">
+                <img src="{{ reportage.image }}" alt="images de présentation des reportages">
+                <p>{{ reportage.content }}</p>
+                <a href="{{ path('reportage_show', {'id': reportage.id}) }}" class="btn btn-primary">Lire la suite</a>
+            </div>
+        </article>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/ReportageController.php'|file_link(0) }}">src/Controller/ReportageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/reportage/index.html.twig'|file_link(0) }}">templates/reportage/index.html.twig</a></code></li>
-    </ul>
-</div>
+    {% endfor %}
+</section>
 {% endblock %}
