@@ -3,18 +3,18 @@
 {% block title %}Hello {{ controller_name }}!{% endblock %}
 
 {% block body %}
-<section class="reportages">
-    {% for reportage in reportages %}
-        <article>
-            <h2>{{ reportage.title }}</h2>
-            <div class="metadata">Écrit le {{ reportage.createdAt | date('d/m/Y') }} à {{ reportage.createdAt | date('H:i') }}</div>
-            <div class="content">
-                <img src="{{ reportage.image }}" class="img-fluid"alt="images de présentation des reportages">
-                <p>{{ reportage.content }}</p>
-                <a href="{{ path('reportage_show', {'id': reportage.id}) }}" class="btn btn-primary">Lire la suite</a>
-            </div>
-        </article>
+    <h1>Shooting perso</h1>
+    <section class="reportages">
+        {% for reportage in reportages %}
+            <article class="border my-4">
+                <h2>{{ reportage.title }}</h2>
+                <div class="metadata">Écrit le {{ reportage.createdAt | date('d/m/Y') }} à {{ reportage.createdAt | date('H:i') }}</div>
+                <div class="content">
+                    <p><img src="{{ reportage.image }}" class="img-fluid"alt="images de présentation des reportages"></p>
+                    <a href="{{ path('reportage_show', {'id': reportage.id}) }}" class="btn btn-primary">Voir le reportage</a>
+                </div>
+            </article>
 
-    {% endfor %}
-</section>
+        {% endfor %}
+    </section>
 {% endblock %}

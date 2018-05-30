@@ -22,14 +22,6 @@ class ReportageController extends Controller
     }
 
     /**
-     * @Route("/", name="home")
-     */
-    public function home()
-    {
-        return $this->render('reportage/home.html.twig');
-    }
-
-    /**
      * @Route("/reportage/{id}", name="reportage_show")
      */
     public function show(Reportage $reportage)
@@ -37,5 +29,25 @@ class ReportageController extends Controller
         return $this->render('reportage/show.html.twig',[
             'reportage' => $reportage
         ]);
+    }
+
+    /**
+     * @Route("/sport", name="sport")
+     */
+    public function sport(ReportageRepository $repo)
+    {
+        $reportageSport = $repo->findByCategory('sport');
+        return $this->render('reportage/sport.html.twig',[
+            'sports' => $reportageSport
+        ]);
+    }
+
+    /**
+     * @Route("/", name="home")
+     */
+    public function home(ReportageRepository $repo)
+    {
+        $reportageSport = $repo->findByCategory('sport');
+        return $this->render('reportage/home.html.twig');
     }
 }
