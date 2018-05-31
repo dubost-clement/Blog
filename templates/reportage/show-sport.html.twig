@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <article>
+        <h2>{{ sport.title }}</h2>
+        <div class="metadata">Écrit le{{ sport.createdAt | date('d/m/Y') }} à {{ sport.createdAt | date('H:i') }}</div>
+        <div class="content">
+            <img src="{{ sport.image }}" class="img-fluid"alt="image illustration du reportage photo">
+            <p>{{ sport.content }}</p>
+        </div>
+    </article>
+{% endblock %}

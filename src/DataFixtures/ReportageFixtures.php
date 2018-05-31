@@ -15,7 +15,8 @@ class ReportageFixtures extends Fixture
             $reportage->setTitle("titre de l'article $i")
                       ->setContent("contenu de l'article $i")
                       ->setImage("http://placehold.it/350x150")
-                      ->setCreatedAt(new \Datetime());
+                      ->setCreatedAt(new \Datetime())
+                      ->setCategory("sport");
             $manager->persist($reportage);
         }
         $manager->flush();

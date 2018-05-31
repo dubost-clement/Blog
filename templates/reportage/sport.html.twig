@@ -9,7 +9,7 @@
                 <div class="metadata">Écrit le {{ sport.createdAt | date('d/m/Y') }} à {{ sport.createdAt | date('H:i') }}</div>
                 <div class="content">
                     <p><img src="{{ sport.image }}" class="img-fluid"alt="images de présentation des reportages"></p>
-                    <a href="{{ path('reportage_show', {'id': sport.id}) }}" class="btn btn-primary">Voir le reportage</a>
+                    <a href="{{ path('sport_show', {'id': sport.id}) }}" class="btn btn-primary">Voir le reportage</a>
                 </div>
             </article>
         {% endfor %}
