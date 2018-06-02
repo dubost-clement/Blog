@@ -14,7 +14,7 @@ class ReportageController extends Controller
      */
     public function shooting(ReportageRepository $repo)
     {
-        $reportages = $repo->findall();
+        $reportages = $repo->findByCategory('personnel');
         return $this->render('reportage/shooting.html.twig', [
             'controller_name' => 'ReportageController',
             'reportages' => $reportages
@@ -27,6 +27,7 @@ class ReportageController extends Controller
     public function showShooting(Reportage $reportage)
     {
         return $this->render('reportage/show-shooting.html.twig',[
+            'controller_name' => 'ReportageController',
             'reportage' => $reportage
         ]);
     }
@@ -38,6 +39,7 @@ class ReportageController extends Controller
     {
         $reportageSport = $repo->findByCategory('sport');
         return $this->render('reportage/sport.html.twig',[
+            'controller_name' => 'ReportageController',
             'sports' => $reportageSport
         ]);
     }
@@ -48,6 +50,7 @@ class ReportageController extends Controller
     public function showSport(Reportage $reportage)
     {
         return $this->render('reportage/show-sport.html.twig',[
+            'controller_name' => 'ReportageController',
             'sport' => $reportage
         ]);
     }
