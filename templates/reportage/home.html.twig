@@ -2,4 +2,29 @@
 
 {% block body %}
     <h1>Bienvenue sur mon portfolio</h1>
+    <div class="last-sport">
+        <h2>dernier shooting sport</h2>
+        {% for last in lastSport %}
+            <article class="border p-3">
+                <div class="content">
+                    <img src="{{ last.image }}" class="img-fluid"alt="image illustration du reportage photo">
+                </div>
+                <div class="metadata">Écrit le {{ last.createdAt | date('d/m/Y') }} à {{ last.createdAt | date('H:i') }}</div>
+                <a href="{{ path('sport_show', {'id': last.id}) }}" class="btn btn-primary">Voir le reportage</a>
+            </article>
+        {% endfor %}
+    </div>
+
+    <div class="last-shooting mt-5">
+        <h2>dernier shooting personnel</h2>
+        {% for last in lastShooting %}
+            <article class="border p-3">
+                <div class="content">
+                    <img src="{{ last.image }}" class="img-fluid"alt="image illustration du reportage photo">
+                </div>
+                <div class="metadata">Écrit le {{ last.createdAt | date('d/m/Y') }} à {{ last.createdAt | date('H:i') }}</div>
+                <a href="{{ path('reportage_show', {'id': last.id}) }}" class="btn btn-primary">Voir le reportage</a>
+            </article>
+        {% endfor %}
+    </div>
 {% endblock %}

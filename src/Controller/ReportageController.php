@@ -43,7 +43,7 @@ class ReportageController extends Controller
             'sports' => $reportageSport
         ]);
     }
-
+    
     /**
      * @Route("/sport/{id}", name="sport_show")
      */
@@ -53,14 +53,5 @@ class ReportageController extends Controller
             'controller_name' => 'ReportageController',
             'sport' => $reportage
         ]);
-    }
-
-    /**
-     * @Route("/", name="home")
-     */
-    public function home(ReportageRepository $repo)
-    {
-        $reportageSport = $repo->findByCategory('sport');
-        return $this->render('reportage/home.html.twig');
-    }
+    }    
 }
