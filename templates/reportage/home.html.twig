@@ -9,7 +9,7 @@
                 <div class="content">
                     <img src="{{ last.image }}" class="img-fluid"alt="image illustration du reportage photo">
                 </div>
-                <div class="metadata">Écrit le {{ last.createdAt | date('d/m/Y') }} à {{ last.createdAt | date('H:i') }}</div>
+                <p class="metadata">Écrit le {{ last.createdAt | date('d/m/Y') }} catégorie <a href="{{ path('sport') }}">{{ last.category }}<a/></p>
                 <a href="{{ path('sport_show', {'id': last.id}) }}" class="btn btn-primary">Voir le reportage</a>
             </article>
         {% endfor %}
@@ -22,8 +22,8 @@
                 <div class="content">
                     <img src="{{ last.image }}" class="img-fluid"alt="image illustration du reportage photo">
                 </div>
-                <div class="metadata">Écrit le {{ last.createdAt | date('d/m/Y') }} à {{ last.createdAt | date('H:i') }}</div>
-                <a href="{{ path('reportage_show', {'id': last.id}) }}" class="btn btn-primary">Voir le reportage</a>
+                <p class="metadata">Écrit le {{ last.createdAt | date('d/m/Y') }} catégorie <a href="{{ path('personnel') }}">{{ last.category }}<a/></p>
+                <a href="{{ path('personnel_show', {'id': last.id}) }}" class="btn btn-primary">Voir le reportage</a>
             </article>
         {% endfor %}
     </div>

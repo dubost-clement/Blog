@@ -10,7 +10,7 @@ use App\Repository\ReportageRepository;
 class ReportageController extends Controller
 {
     /**
-     * @Route("/reportage", name="reportage")
+     * @Route("/personnel", name="personnel")
      */
     public function shooting(ReportageRepository $repo)
     {
@@ -22,7 +22,7 @@ class ReportageController extends Controller
     }
 
     /**
-     * @Route("/reportage/{id}", name="reportage_show")
+     * @Route("/personnel/{id}", name="personnel_show")
      */
     public function showShooting(Reportage $reportage)
     {
