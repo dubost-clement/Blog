@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Reportage;
 use App\Repository\ReportageRepository;
 
-class ReportageController extends Controller
+class ReportageFrontController extends Controller
 {
     /**
      * @Route("/personnel", name="personnel")
