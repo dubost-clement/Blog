@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% form_theme formReportage 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center">Création d'un reportage</h1>
+
+    {{ form_start(formReportage) }}
+
+        {{ form_row(formReportage.title, {'attr': {'placeholder': "Titre du reportage"}}) }}
+        {{ form_row(formReportage.content, {'attr': {'placeholder': "Contenu du reportage"}}) }}
+        {{ form_row(formReportage.image, {'attr': {'placeholder': "URL de l'image"}}) }}
+        <button type="submit" class="btn btn-primary">Ajouter le reportage</button>
+        <a href="{{ path('admin') }}" class="btn btn-primary">Retour</a>
+
+    {{ form_end(formReportage) }}
+
+{% endblock%}

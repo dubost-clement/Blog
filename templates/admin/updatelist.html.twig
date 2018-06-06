@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center">Liste des reportages</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>date de création</th>
+            <th>Categorie</th>
+            <th>action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for list in updateList %}
+            <tr>
+                <td>{{ list.id }}</td>
+                <td>{{ list.title }}</td>
+                <td>{{ list.createdAt | date('d-m-Y') }}</td>
+                <td>{{ list.category }}</td>
+                <td>
+                    <a href="#">modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ path('admin') }}" class="btn btn-primary">Retour</a>
+
+{% endblock %}
