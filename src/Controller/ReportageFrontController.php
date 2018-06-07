@@ -16,7 +16,7 @@ class ReportageFrontController extends Controller
     {
         $reportages = $repo->findByCategory('personnel');
         return $this->render('reportage/shooting.html.twig', [
-            'controller_name' => 'ReportageController',
+            'controller_name' => 'ReportageFrontController',
             'reportages' => $reportages
         ]);
     }
@@ -27,7 +27,7 @@ class ReportageFrontController extends Controller
     public function showShooting(Reportage $reportage)
     {
         return $this->render('reportage/show-shooting.html.twig',[
-            'controller_name' => 'ReportageController',
+            'controller_name' => 'ReportageFrontController',
             'reportage' => $reportage
         ]);
     }
@@ -39,7 +39,7 @@ class ReportageFrontController extends Controller
     {
         $reportageSport = $repo->findByCategory('sport');
         return $this->render('reportage/sport.html.twig',[
-            'controller_name' => 'ReportageController',
+            'controller_name' => 'ReportageFrontController',
             'sports' => $reportageSport
         ]);
     }
@@ -50,7 +50,7 @@ class ReportageFrontController extends Controller
     public function showSport(Reportage $reportage)
     {
         return $this->render('reportage/show-sport.html.twig',[
-            'controller_name' => 'ReportageController',
+            'controller_name' => 'ReportageFrontController',
             'sport' => $reportage
         ]);
     }    
