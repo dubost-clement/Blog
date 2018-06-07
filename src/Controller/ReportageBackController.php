@@ -22,8 +22,20 @@ class ReportageBackController extends Controller
                     ->add('title')
                     ->add('content')
                     ->add('image')
+                    ->add('category')
                     ->getForm();
+
+        $form ->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $reportage->setCreatedAt(new \DateTime());
+            $manager->persist($reportage);
+            $manager->flush();
+            return $this->redirectToRoute('home');
+        }
+
         return $this->render('reportage/edit/create.html.twig',[
+            'controller_name' => 'ReportageBackController',
             'formReportage' => $form->createView()
         ]);
     }
@@ -34,7 +46,8 @@ class ReportageBackController extends Controller
     public function updateList(ReportageRepository $repo)
     {
         $reportageList = $repo->findAll();
-        return $this->render('admin/updatelist.html.twig',[
+        return $this->render('reportage/edit/updatelist.html.twig',[
+            'controller_name' => 'ReportageBackController',
             'updateList' => $reportageList
         ]);
     }
@@ -42,7 +55,18 @@ class ReportageBackController extends Controller
     /**
      * @Route("/admin/update/{id}", name="reportage_update")
      */
-    public function updateReportage()
+    public function updateReportage(Reportage $reportage)
+    {
+        return $this->render('reportage/edit/updatereportage.html.twig',[
+            'controller_name' => 'ReportageBackController',
+            'reportage' => $reportage
+        ]);
+    }
+
+    /**
+     * 
+     */
+    public function deleteReportage()
     {
         
     }
