@@ -55,11 +55,26 @@ class ReportageBackController extends Controller
     /**
      * @Route("/admin/update/{id}", name="reportage_update")
      */
-    public function updateReportage(Reportage $reportage)
+    public function updateReportage(Reportage $reportage, Request $request, ObjectManager $manager)
     {
+        $form = $this->createFormBuilder($reportage)
+                    ->add('title')
+                    ->add('content')
+                    ->add('image')
+                    ->add('category')
+                    ->getForm();
+
+        $form ->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid()){
+            $manager->persist($reportage);
+            $manager->flush();
+            return $this->redirectToRoute('home');
+        }
+
         return $this->render('reportage/edit/updatereportage.html.twig',[
             'controller_name' => 'ReportageBackController',
-            'reportage' => $reportage
+            'formReportage' => $form->createView()
         ]);
     }
 
