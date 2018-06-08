@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% form_theme formCategory 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center">Création d'une categorie</h1>
+
+    {{ form_start(formCategory) }}
+
+        {{ form_row(formCategory.name, {'attr': {'placeholder': "nom de la categorie"}}) }}
+        <button type="submit" class="btn btn-primary">Ajouter la categorie</button>
+        <a href="{{ path('admin') }}" class="btn btn-primary">Retour</a>
+
+    {{ form_end(formCategory) }}
+
+{% endblock%}
