@@ -5,22 +5,21 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Titre</th>
             <th>date de création</th>
             <th>Categorie</th>
-            <th>action</th>
+            <th>actions</th>
         </tr>
     </thead>
     <tbody>
         {% for list in updateList %}
             <tr>
-                <td>{{ list.id }}</td>
                 <td>{{ list.title }}</td>
                 <td>{{ list.createdAt | date('d-m-Y') }}</td>
                 <td>{{ list.category }}</td>
                 <td>
                     <a href="{{ path('reportage_update', {'id': list.id}) }}">modifier</a>
+                    <a href="{{ path('reportage_delete', {'id': list.id}) }}">Supprimer</a>
                 </td>
             </tr>
         {% endfor %}

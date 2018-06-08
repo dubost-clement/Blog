@@ -65,7 +65,7 @@ class ReportageBackController extends Controller
                     ->getForm();
 
         $form ->handleRequest($request);
-        
+
         if($form->isSubmitted() && $form->isValid()){
             $manager->persist($reportage);
             $manager->flush();
@@ -79,10 +79,12 @@ class ReportageBackController extends Controller
     }
 
     /**
-     * 
+     * @Route("/admin/delete/{id}", name="reportage_delete")
      */
-    public function deleteReportage()
+    public function deleteReportage(ObjectManager $manager)
     {
-        
+       return $this->render('reportage/edit/deleteconfirmation.html.twig',[
+            'controller_name' => 'ReportageBackController'
+       ]); 
     }
 }
