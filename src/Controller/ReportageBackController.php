@@ -13,7 +13,7 @@ use App\Repository\ReportageRepository;
 class ReportageBackController extends Controller
 {
     /**
-     * @Route("/admin/new", name="reportage_create")
+     * @Route("/admin/new-reportage", name="reportage_create")
      */
     public function createReportage(Request $request, ObjectManager $manager)
     {
@@ -41,7 +41,7 @@ class ReportageBackController extends Controller
     }
 
     /**
-     * @Route("/admin/list", name="reportage_list")
+     * @Route("/admin/liste-reportage", name="reportage_list")
      */
     public function updateList(ReportageRepository $repo)
     {
@@ -53,7 +53,7 @@ class ReportageBackController extends Controller
     }
 
     /**
-     * @Route("/admin/update/{id}", name="reportage_update")
+     * @Route("/admin/update-reportage/{id}", name="reportage_update")
      */
     public function updateReportage(Reportage $reportage, Request $request, ObjectManager $manager)
     {
