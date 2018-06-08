@@ -13,7 +13,7 @@ use App\Repository\CategoryRepository;
 class CategoryController extends Controller
 {
     /**
-     * @Route("/categories", name="category_list")
+     * @Route("/admin/categories", name="category_list")
      */
     public function CategoryList(CategoryRepository $repo)
     {
@@ -25,7 +25,7 @@ class CategoryController extends Controller
     }
     
     /**
-     * @Route("/categories/new", name="category_create")
+     * @Route("/admin/categories/new", name="category_create")
      */
     public function createCategory(Request $request, ObjectManager $manager)
     {
@@ -43,6 +43,29 @@ class CategoryController extends Controller
         }
 
         return $this->render('category/createcategory.html.twig',[
+            'controller_name' => 'CategoryController',
+            'formCategory' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/update-category/{id}", name="category_update")
+     */
+    public function updateCategory(Category $category, Request $request, ObjectManager $manager)
+    {
+        $form = $this->createFormBuilder($category)
+                    ->add('name')
+                    ->getForm();
+
+        $form ->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $manager->persist($category);
+            $manager->flush();
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('category/categoryupdate.html.twig',[
             'controller_name' => 'CategoryController',
             'formCategory' => $form->createView()
         ]);
