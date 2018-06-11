@@ -79,12 +79,12 @@ class ReportageBackController extends Controller
     }
 
     /**
-     * @Route("/admin/delete/{id}", name="reportage_delete")
+     * @Route("/admin/delete-reportage/{id}", name="reportage_delete")
      */
-    public function deleteReportage(ObjectManager $manager)
+    public function deleteReportage(Reportage $reportage, Request $request, ObjectManager $manager)
     {
-       return $this->render('reportage/edit/deleteconfirmation.html.twig',[
-            'controller_name' => 'ReportageBackController'
-       ]); 
+        $manager->remove($reportage);
+        $manager->flush();
+        return $this->redirectToRoute('home');
     }
 }

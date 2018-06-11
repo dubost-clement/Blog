@@ -70,4 +70,14 @@ class CategoryController extends Controller
             'formCategory' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/admin/delete-category/{id}", name="category_delete")
+     */
+    public function deleteCategory(Category $category, Request $request, ObjectManager $manager)
+    {
+        $manager->remove($category);
+        $manager->flush();
+        return $this->redirectToRoute('home');
+    }
 }

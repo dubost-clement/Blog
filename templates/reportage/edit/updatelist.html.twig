@@ -18,8 +18,8 @@
                 <td>{{ list.createdAt | date('d-m-Y') }}</td>
                 <td>{{ list.category }}</td>
                 <td>
-                    <a href="{{ path('reportage_update', {'id': list.id}) }}">modifier</a>
-                    <a href="{{ path('reportage_delete', {'id': list.id}) }}">Supprimer</a>
+                    <a href="{{ path('reportage_update', {'id': list.id}) }}" class="btn btn-primary mr-2">modifier</a>
+                    <a href="{{ path('reportage_delete', {'id': list.id}) }}" class="btn btn-danger">Supprimer</a>
                 </td>
             </tr>
         {% endfor %}
