@@ -6,8 +6,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use App\Entity\Reportage;
+use App\Entity\Category;
 use App\Repository\ReportageRepository;
 
 class ReportageBackController extends Controller
@@ -22,7 +24,10 @@ class ReportageBackController extends Controller
                     ->add('title')
                     ->add('content')
                     ->add('image')
-                    ->add('category')
+                    ->add('category', EntityType::class,[
+                        'class' => Category::class,
+                        'choice_label' => 'name'
+                    ])
                     ->getForm();
 
         $form ->handleRequest($request);
@@ -61,7 +66,10 @@ class ReportageBackController extends Controller
                     ->add('title')
                     ->add('content')
                     ->add('image')
-                    ->add('category')
+                    ->add('category', EntityType::class,[
+                        'class' => Category::class,
+                        'choice_label' => 'name'
+                    ])
                     ->getForm();
 
         $form ->handleRequest($request);

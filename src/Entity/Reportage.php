@@ -37,7 +37,8 @@ class Reportage
     private $createdAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="reportages")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $category;
 
@@ -94,12 +95,12 @@ class Reportage
         return $this;
     }
 
-    public function getCategory(): ?string
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
 
-    public function setCategory(string $category): self
+    public function setCategory(?Category $category): self
     {
         $this->category = $category;
 

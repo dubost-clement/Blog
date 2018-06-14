@@ -9,7 +9,7 @@
         {{ form_row(formReportage.title, {'attr': {'placeholder': "Titre du reportage"}}) }}
         {{ form_row(formReportage.content, {'label': 'Contenu'}, {'attr': {'placeholder': "Contenu du reportage"}}) }}
         {{ form_row(formReportage.image, {'attr': {'placeholder': "URL de l'image"}}) }}
-        {{ form_row(formReportage.category, {'label': 'Catégorie'}, {'attr': {'placeholder': "Catégorie du reportage"}}) }}
+        {{ form_row(formReportage.category) }}
         <button type="submit" class="btn btn-primary mr-3">Ajouter le reportage</button>
         <a href="{{ path('admin') }}" class="btn btn-primary">Retour</a>
 
