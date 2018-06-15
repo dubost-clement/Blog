@@ -19,7 +19,7 @@
                 <td>{{ list.category.name }}</td>
                 <td>
                     <a href="{{ path('reportage_update', {'id': list.id}) }}" class="btn btn-primary mr-2">modifier</a>
-                    <a href="{{ path('reportage_delete', {'id': list.id}) }}" class="btn btn-danger">Supprimer</a>
+                    <a href="{{ path('reportage_delete', {'id': list.id}) }}" class="btn btn-danger" data-id="{{ list.id }}">Supprimer</a>
                 </td>
             </tr>
         {% endfor %}

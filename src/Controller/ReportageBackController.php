@@ -93,6 +93,6 @@ class ReportageBackController extends Controller
     {
         $manager->remove($reportage);
         $manager->flush();
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('reportage_list');
     }
 }
