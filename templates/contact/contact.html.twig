@@ -1,5 +1,13 @@
 {% extends 'base.html.twig' %}
+{% form_theme emailForm 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
     <h1 class="text-center">Contactez moi</h1>
+    {{ form_start(emailForm) }}
+
+        {{ form_row(emailForm.email, {'attr': {'placeholder': "votre email"}}) }}
+        {{ form_row(emailForm.message, {'attr': {'placeholder': "votre message"}}) }}
+        {{ form_row(emailForm.envoyer, {'attr': {'class': "btn btn-primary"}}) }}
+
+    {{ form_end(emailForm) }}
 {% endblock %}
