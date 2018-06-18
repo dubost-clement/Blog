@@ -6,29 +6,44 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Reportage;
 use App\Repository\ReportageRepository;
+use App\Repository\CategoryRepository;
 
 class ReportageFrontController extends Controller
 {
     /**
-     * @Route("/personnel", name="personnel")
+     * @Route("/shooting/{slug}", name="personnel")
      */
-    public function shooting(ReportageRepository $repo)
+    public function shooting(ReportageRepository $repo, CategoryRepository $repoCategory, $slug)
     {
-        $reportages = $repo->findByCategory('personnel');
+        $categories = $repoCategory->findAll();
+
+        $category = $repoCategory->findBy(
+            array('name' => $slug),
+            array('id' => 'desc')
+        );
+
+        $reportages = $repo->findBy(
+            array('category' => $category),
+            array('id' => 'desc')
+        );
+
         return $this->render('reportage/shooting.html.twig', [
             'controller_name' => 'ReportageFrontController',
-            'reportages' => $reportages
+            'reportages' => $reportages,
+            'categories' => $categories
         ]);
     }
 
     /**
-     * @Route("/personnel/{id}", name="personnel_show")
+     * @Route("/shooting/{slug}/{id}", name="personnel_show")
      */
-    public function showShooting(Reportage $reportage)
+    public function showShooting(Reportage $reportage, CategoryRepository $repoCategory)
     {
+        $categories = $repoCategory->findAll();
         return $this->render('reportage/show-shooting.html.twig',[
             'controller_name' => 'ReportageFrontController',
-            'reportage' => $reportage
+            'reportage' => $reportage,
+            'categories' => $categories
         ]);
     }
 

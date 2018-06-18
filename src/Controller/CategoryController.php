@@ -27,8 +27,9 @@ class CategoryController extends Controller
     /**
      * @Route("/admin/categories/new", name="category_create")
      */
-    public function createCategory(Request $request, ObjectManager $manager)
+    public function createCategory(Request $request, ObjectManager $manager, CategoryRepository $repoCategory)
     {
+        $categories = $repoCategory->findAll();
         $category = new Category();
         $form = $this->createFormBuilder($category)
                     ->add('name')
@@ -44,15 +45,17 @@ class CategoryController extends Controller
 
         return $this->render('category/createcategory.html.twig',[
             'controller_name' => 'CategoryController',
-            'formCategory' => $form->createView()
+            'formCategory' => $form->createView(),
+            'categories' => $categories
         ]);
     }
 
     /**
      * @Route("/admin/update-category/{id}", name="category_update")
      */
-    public function updateCategory(Category $category, Request $request, ObjectManager $manager)
+    public function updateCategory(Category $category, CategoryRepository $repoCategory, Request $request, ObjectManager $manager)
     {
+        $categories = $repoCategory->findAll();
         $form = $this->createFormBuilder($category)
                     ->add('name')
                     ->getForm();
@@ -67,7 +70,8 @@ class CategoryController extends Controller
 
         return $this->render('category/categoryupdate.html.twig',[
             'controller_name' => 'CategoryController',
-            'formCategory' => $form->createView()
+            'formCategory' => $form->createView(),
+            'categories' => $categories
         ]);
     }
 

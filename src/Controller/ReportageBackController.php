@@ -11,14 +11,16 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Reportage;
 use App\Entity\Category;
 use App\Repository\ReportageRepository;
+use App\Repository\CategoryRepository;
 
 class ReportageBackController extends Controller
 {
     /**
      * @Route("/admin/new-reportage", name="reportage_create")
      */
-    public function createReportage(Request $request, ObjectManager $manager)
+    public function createReportage(Request $request, ObjectManager $manager, CategoryRepository $repoCategory)
     {
+        $categories = $repoCategory->findAll();
         $reportage = new Reportage();
         $form = $this->createFormBuilder($reportage)
                     ->add('title')
@@ -41,27 +43,31 @@ class ReportageBackController extends Controller
 
         return $this->render('reportage/edit/create.html.twig',[
             'controller_name' => 'ReportageBackController',
-            'formReportage' => $form->createView()
+            'formReportage' => $form->createView(),
+            'categories' => $categories
         ]);
     }
 
     /**
      * @Route("/admin/liste-reportage", name="reportage_list")
      */
-    public function updateList(ReportageRepository $repo)
+    public function updateList(ReportageRepository $repo, CategoryRepository $repoCategory)
     {
+        $categories = $repoCategory->findAll();
         $reportageList = $repo->findAll();
         return $this->render('reportage/edit/updatelist.html.twig',[
             'controller_name' => 'ReportageBackController',
-            'updateList' => $reportageList
+            'updateList' => $reportageList,
+            'categories' => $categories
         ]);
     }
 
     /**
      * @Route("/admin/update-reportage/{id}", name="reportage_update")
      */
-    public function updateReportage(Reportage $reportage, Request $request, ObjectManager $manager)
+    public function updateReportage(Reportage $reportage, CategoryRepository $repoCategory, Request $request, ObjectManager $manager)
     {
+        $categories = $repoCategory->findAll();
         $form = $this->createFormBuilder($reportage)
                     ->add('title')
                     ->add('content')
@@ -82,7 +88,8 @@ class ReportageBackController extends Controller
 
         return $this->render('reportage/edit/updatereportage.html.twig',[
             'controller_name' => 'ReportageBackController',
-            'formReportage' => $form->createView()
+            'formReportage' => $form->createView(),
+            'categories' => $categories
         ]);
     }
 

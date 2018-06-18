@@ -10,13 +10,16 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
+use App\Repository\CategoryRepository;
+
 class ContactController extends Controller
 {
     /**
      * @Route("/contact", name="contact")
      */
-    public function contactForm(Request $request, \Swift_Mailer $mailer)
+    public function contactForm(Request $request, \Swift_Mailer $mailer, CategoryRepository $repoCategory)
     {
+        $categories = $repoCategory->findAll();
         $form = $this->createFormBuilder()
                     ->add('email', EmailType::class)
                     ->add('message', TextareaType::class)
@@ -38,7 +41,8 @@ class ContactController extends Controller
 
         return $this->render('contact/contact.html.twig',[
             'controller_name' => 'ContactController',
-            'emailForm' => $form->createView()
+            'emailForm' => $form->createView(),
+            'categories' => $categories
         ]);
     }
 }

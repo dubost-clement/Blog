@@ -3,7 +3,7 @@
 {% block title %}Hello {{ controller_name }}!{% endblock %}
 
 {% block body %}
-    <h1>Shooting perso</h1>
+    <h1>Shooting</h1>
     <section class="reportages">
         {% for reportage in reportages %}
             <article class="border my-4">
@@ -11,7 +11,7 @@
                 <div class="metadata">Écrit le {{ reportage.createdAt | date('d/m/Y') }} à {{ reportage.createdAt | date('H:i') }}</div>
                 <div class="content">
                     <p><img src="{{ reportage.image }}" class="img-fluid"alt="images de présentation des reportages"></p>
-                    <a href="{{ path('personnel_show', {'id': reportage.id}) }}" class="btn btn-primary">Voir le reportage</a>
+                    <a href="{{ path('personnel_show', {'slug': reportage.category.name, 'id': reportage.id}) }}" class="btn btn-primary">Voir le reportage</a>
                 </div>
             </article>
 

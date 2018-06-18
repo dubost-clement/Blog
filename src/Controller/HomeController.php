@@ -32,7 +32,8 @@ class HomeController extends Controller
 
         return $this->render('reportage/home.html.twig',[
             'controller_name' => 'HomeController',
-            'lastReportages' => $lastReportages 
+            'lastReportages' => $lastReportages,
+            'categories' => $categories
         ]);
     }
 }
