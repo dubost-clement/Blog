@@ -6,6 +6,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use App\Entity\Reportage;
@@ -23,12 +25,17 @@ class ReportageBackController extends Controller
         $categories = $repoCategory->findAll();
         $reportage = new Reportage();
         $form = $this->createFormBuilder($reportage)
-                    ->add('title')
-                    ->add('content')
+                    ->add('title', TextType::class,[
+                        'label' => 'Titre'
+                    ])
+                    ->add('content', TextareaType::class,[
+                        'label' => 'Contenu'
+                    ])
                     ->add('image')
                     ->add('category', EntityType::class,[
                         'class' => Category::class,
-                        'choice_label' => 'name'
+                        'choice_label' => 'name',
+                        'label' => 'Catégorie'
                     ])
                     ->getForm();
 
@@ -69,12 +76,17 @@ class ReportageBackController extends Controller
     {
         $categories = $repoCategory->findAll();
         $form = $this->createFormBuilder($reportage)
-                    ->add('title')
-                    ->add('content')
+                    ->add('title', TextType::class,[
+                        'label' => 'Titre'
+                    ])
+                    ->add('content', TextareaType::class,[
+                        'label' => 'Contenu'
+                    ])
                     ->add('image')
                     ->add('category', EntityType::class,[
                         'class' => Category::class,
-                        'choice_label' => 'name'
+                        'choice_label' => 'name',
+                        'label' => 'Catégorie'
                     ])
                     ->getForm();
 

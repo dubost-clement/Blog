@@ -7,7 +7,7 @@
     {{ form_start(formReportage) }}
 
         {{ form_row(formReportage.title, {'attr': {'placeholder': "Titre du reportage"}}) }}
-        {{ form_row(formReportage.content, {'label': 'Contenu'}, {'attr': {'placeholder': "Contenu du reportage"}}) }}
+        {{ form_row(formReportage.content, {'attr': {'placeholder': "Contenu du reportage"}}) }}
         {{ form_row(formReportage.image, {'attr': {'placeholder': "URL de l'image"}}) }}
         {{ form_row(formReportage.category) }}
         <button type="submit" class="btn btn-primary">Modifier</button>
