@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         {% block stylesheets %}
 
         {% endblock %}
@@ -17,11 +18,11 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Accueil</a>
+                    <a class="nav-link" href="/"><i class="fas fa-home"></i>Accueil</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Shooting
+                        <i class="fas fa-camera"></i>Shooting
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">   
                         {% for category in categories %}
@@ -30,10 +31,10 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
+                    <a class="nav-link" href="/contact"><i class="fas fa-envelope"></i>Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/connection">Admin</a>
+                    <a class="nav-link" href="/connection"><i class="fas fa-sign-in-alt"></i>Admin</a>
                 </li>
             </ul>
         </div>
