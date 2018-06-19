@@ -12,7 +12,7 @@
                 <div class="content">
                     <img src="{{ lastReportage.image }}" class="img-fluid"alt="image illustration du reportage photo">
                 </div>
-                <p class="metadata">Écrit le {{ lastReportage.createdAt | date('d/m/Y') }} catégorie <a href="{{ path('sport') }}">{{ lastReportage.category.name }}<a/></p>
+                <p class="metadata">Écrit le {{ lastReportage.createdAt | date('d/m/Y') }} catégorie <a href="{{ path('personnel', {'slug': lastReportage.category.name}) }}">{{ lastReportage.category.name }}<a/></p>
                 <a href="{{ path('personnel_show', {'slug': lastReportage.category.name, 'id': lastReportage.id}) }}" class="btn btn-primary">Voir le reportage</a>
             </article>
         {% endfor %}
