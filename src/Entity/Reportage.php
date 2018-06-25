@@ -3,9 +3,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ReportageRepository")
+ */
+
+ /**
+ * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Reportage
 {
@@ -27,9 +34,16 @@ class Reportage
     private $content;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Vich\UploadableField(mapping="reportage_image", fileNameProperty="imageName")
+     * @var File
      */
-    private $image;
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $imageName;
 
     /**
      * @ORM\Column(type="datetime")
@@ -71,16 +85,27 @@ class Reportage
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImageFile(): ?File
     {
-        return $this->image;
+        return $this->imageFile;
     }
 
-    public function setImage(string $image): self
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     */
+    public function setImageFile(?File $image = null): void
     {
-        $this->image = $image;
+        $this->imageFile = $image;
+    }
 
-        return $this;
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
@@ -105,5 +130,9 @@ class Reportage
         $this->category = $category;
 
         return $this;
+    }
+
+    public function __toString() {
+    	return $this->getTitle();
     }
 }

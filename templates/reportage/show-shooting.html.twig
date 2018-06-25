@@ -5,7 +5,7 @@
         <h2>{{ reportage.title }}</h2>
         <div class="metadata">Écrit le{{ reportage.createdAt | date('d/m/Y') }} à {{ reportage.createdAt | date('H:i') }}</div>
         <div class="content">
-            <img src="{{ reportage.image }}" class="img-fluid"alt="image illustration du reportage photo">
+            <img src="{{ vich_uploader_asset(reportage, 'imageFile') }}" class="img-fluid"alt="image illustration du reportage photo">
             <p>{{ reportage.content }}</p>
         </div>
     </article>

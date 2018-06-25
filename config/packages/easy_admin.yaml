@@ -1,0 +1,40 @@
+easy_admin:
+  site_name:
+      'Administration'
+  entities:
+      Reportage:
+          class: App\Entity\Reportage
+          list:
+              fields:
+                  - { property: 'title', type: 'string', label: 'Titre' }
+                  - { property: 'createdAt', format: 'd/m/Y', label: 'Date' }
+                  - { property: 'category', label: 'Catégorie' }
+          form:
+              fields:
+                  - { property: 'title', label: 'Titre' }
+                  - { property: 'content', label: 'Contenu' }
+                  - { property: 'imageFile', type: 'vich_image', label: 'Image principale' }
+                  - { property: 'createdAt', label: 'Date de création' }
+                  - { property: 'category', label: 'Catégorie' }
+          edit:
+              title: "modifications article"
+          new:
+              title: "création article"
+
+      Category:
+          class: App\Entity\Category
+          list:
+              fields:
+                  - { property: 'name', label: 'Nom'}
+                  - reportages
+          form:
+              fields:
+                  - { property: 'name', label: 'Nom' }
+                
+  design:
+        brand_color: '#1ABC9C'
+        menu:
+          - { label: 'Accueil', route: 'home' }
+          - { entity: 'Reportage', label: 'Reportages' }
+          - { entity: 'Category', label: 'Catégories' }
+

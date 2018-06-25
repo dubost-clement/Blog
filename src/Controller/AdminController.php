@@ -9,7 +9,7 @@ use App\Repository\CategoryRepository;
 class AdminController extends Controller
 {
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/administration", name="admin")
      */
     public function adminAction(CategoryRepository $repoCategory)
     {

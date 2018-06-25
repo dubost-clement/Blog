@@ -10,7 +10,7 @@
             <h2 class="text-center my-3">Dernier shooting {{ lastReportage.category.name }}</h2>
             <article class="border m-5 p-3">
                 <div class="content">
-                    <img src="{{ lastReportage.image }}" class="img-fluid"alt="image illustration du reportage photo">
+                    <img src="{{ vich_uploader_asset(lastReportage, 'imageFile') }}" class="img-fluid" alt="image illustration du reportage photo">
                 </div>
                 <p class="metadata">Écrit le {{ lastReportage.createdAt | date('d/m/Y') }} catégorie <a href="{{ path('personnel', {'slug': lastReportage.category.name}) }}">{{ lastReportage.category.name }}<a/></p>
                 <a href="{{ path('personnel_show', {'slug': lastReportage.category.name, 'id': lastReportage.id}) }}" class="btn btn-primary">Voir le reportage</a>
