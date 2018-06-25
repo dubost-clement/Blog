@@ -1,3 +1,26 @@
+/* ---------- Icone FontAwesome NavBar ---------- */
 .fas.fa-home, .fas.fa-camera, .fas.fa-envelope, .fas.fa-sign-in-alt{
     margin-right: 5px;
+}
+
+/* ---------- Form Contact ---------- */
+.form-email{
+    width: 100%;
+    max-width: 350px;
+}
+
+.form-message{
+    width: 100%;
+    max-width: 700px;
+}
+
+/* ---------- Fixed Footer Bottom ---------- */
+#page {
+	min-height:100vh;
+	display:flex;
+	flex-direction:column;
+}
+
+#content{
+    flex-grow:1;
 }

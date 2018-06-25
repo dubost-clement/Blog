@@ -2,13 +2,14 @@
 
 {% block body %}
     <header>
-        <img src="{{asset('images/photo.jpg')}}" class="img-fluid" alt="">
+        <img src="{{asset('images/header.jpg')}}" class="img-fluid" alt="">
     </header>
-    <h1>Bienvenue sur mon portfolio</h1>
+
     <div class="last-sport">
         {% for lastReportage in lastReportages %}
             <h2 class="text-center my-3">Dernier shooting {{ lastReportage.category.name }}</h2>
-            <article class="border m-5 p-3">
+            <article class="border m-2 m-md-5 p-2 p-md-3">
+                <h3>{{ lastReportage.title }}</h3>
                 <div class="content">
                     <img src="{{ vich_uploader_asset(lastReportage, 'imageFile') }}" class="img-fluid" alt="image illustration du reportage photo">
                 </div>

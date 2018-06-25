@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use App\Repository\CategoryRepository;
+use App\Entity\User;
 
 class ContactController extends Controller
 {

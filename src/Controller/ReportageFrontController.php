@@ -30,7 +30,8 @@ class ReportageFrontController extends Controller
         return $this->render('reportage/shooting.html.twig', [
             'controller_name' => 'ReportageFrontController',
             'reportages' => $reportages,
-            'categories' => $categories
+            'categories' => $categories,
+            'name' => $slug
         ]);
     }
 

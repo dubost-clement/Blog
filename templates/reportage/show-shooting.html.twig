@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
+{% block title %}Shooting - {{ reportage.title }}{% endblock %}
 
 {% block body %}
-    <article>
+    <article class="m-2 m-md-4 p-2 p-md-3 text-center">
         <h2>{{ reportage.title }}</h2>
         <div class="metadata">Écrit le{{ reportage.createdAt | date('d/m/Y') }} à {{ reportage.createdAt | date('H:i') }}</div>
         <div class="content">
-            <img src="{{ vich_uploader_asset(reportage, 'imageFile') }}" class="img-fluid"alt="image illustration du reportage photo">
-            <p>{{ reportage.content }}</p>
+            <img src="{{ vich_uploader_asset(reportage, 'imageFile') }}" class="img-fluid" alt="image illustration du reportage photo">
+            <p class="mt-5">{{ reportage.content }}</p>
         </div>
     </article>
 {% endblock %}

@@ -1,12 +1,11 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block title %}Liste shooting  {{ name }}{% endblock %}
 
 {% block body %}
-    <h1>Shooting</h1>
+    <h1 class="text-center">Shooting {{ name }}</h1>
     <section class="reportages">
         {% for reportage in reportages %}
-            <article class="border my-4">
+            <article class="border m-2 m-md-4 p-2 p-md-3">
                 <h2>{{ reportage.title }}</h2>
                 <div class="metadata">Écrit le {{ reportage.createdAt | date('d/m/Y') }} à {{ reportage.createdAt | date('H:i') }}</div>
                 <div class="content">

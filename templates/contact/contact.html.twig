@@ -1,13 +1,21 @@
 {% extends 'base.html.twig' %}
 {% form_theme emailForm 'bootstrap_4_layout.html.twig' %}
+{% block title %}Contact{% endblock %}
 
 {% block body %}
+
     <h1 class="text-center">Contactez moi</h1>
+    <p class="p-3">N'hésitez pas à me contacter pour toutes demandes de shooting ou pour toutes autres questions
+        Remplissez le formulaire de contact ci-dessous</p>
     {{ form_start(emailForm) }}
-
-        {{ form_row(emailForm.email, {'attr': {'placeholder': "votre email"}}) }}
-        {{ form_row(emailForm.message, {'attr': {'placeholder': "votre message"}}) }}
-        {{ form_row(emailForm.envoyer, {'attr': {'class': "btn btn-primary"}}) }}
-
+        <div class="form-email p-3">
+            {{ form_row(emailForm.email, {'attr': {'placeholder': "votre email"}}) }}
+        </div>
+        <div class="form-message p-3">
+            {{ form_row(emailForm.message, {'attr': {'placeholder': "votre message"}}) }}
+        </div>
+        <div class="form-envoyer p-3">
+            {{ form_row(emailForm.envoyer, {'attr': {'class': "btn btn-primary"}}) }}
+        </div>
     {{ form_end(emailForm) }}
 {% endblock %}
