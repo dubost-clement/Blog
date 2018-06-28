@@ -8,6 +8,17 @@
         <div class="content">
             <img src="{{ vich_uploader_asset(reportage, 'imageFile') }}" class="img-fluid" alt="image illustration du reportage photo">
             <p class="mt-5">{{ reportage.content }}</p>
+            <div class="owl-carousel">
+                <div>
+                    <img src="{{ vich_uploader_asset(reportage, 'carouselFile1') }}" alt="">
+                </div>
+                <div>
+                    <img src="{{ vich_uploader_asset(reportage, 'carouselFile2') }}" alt="">
+                </div>
+                <div>
+                    <img src="{{ vich_uploader_asset(reportage, 'carouselFile3') }}" alt="">
+                </div>
+            </div>
         </div>
     </article>
 {% endblock %}
