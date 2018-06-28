@@ -46,6 +46,42 @@ class Reportage
     private $imageName;
 
     /**
+     * @Vich\UploadableField(mapping="reportage_image", fileNameProperty="carouselName1")
+     * @var File
+     */
+    private $carouselFile1;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $carouselName1;
+
+    /**
+     * @Vich\UploadableField(mapping="reportage_image", fileNameProperty="carouselName2")
+     * @var File
+     */
+    private $carouselFile2;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $carouselName2;
+
+    /**
+     * @Vich\UploadableField(mapping="reportage_image", fileNameProperty="carouselName3")
+     * @var File
+     */
+    private $carouselFile3;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $carouselName3;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -106,6 +142,75 @@ class Reportage
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    public function getCarouselFile1(): ?File
+    {
+        return $this->carouselFile1;
+    }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $carousel1
+     */
+    public function setCarouselFile1(?File $carousel1 = null): void
+    {
+        $this->carouselFile1 = $carousel1;
+    }
+
+    public function setCarouselName1(?string $carouselName1): void
+    {
+        $this->carouselName1 = $carouselName1;
+    }
+
+    public function getCarouselName1(): ?string
+    {
+        return $this->carouselName1;
+    }
+
+    public function getCarouselFile2(): ?File
+    {
+        return $this->carouselFile2;
+    }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $carousel2
+     */
+    public function setCarouselFile2(?File $carousel2 = null): void
+    {
+        $this->carouselFile2 = $carousel2;
+    }
+
+    public function setCarouselName2(?string $carouselName2): void
+    {
+        $this->carouselName2 = $carouselName2;
+    }
+
+    public function getCarouselName2(): ?string
+    {
+        return $this->carouselName2;
+    }
+
+    public function getCarouselFile3(): ?File
+    {
+        return $this->carouselFile3;
+    }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $carousel3
+     */
+    public function setCarouselFile3(?File $carousel3 = null): void
+    {
+        $this->carouselFile3 = $carousel3;
+    }
+
+    public function setCarouselName3(?string $carouselName3): void
+    {
+        $this->carouselName3 = $carouselName3;
+    }
+
+    public function getCarouselName3(): ?string
+    {
+        return $this->carouselName3;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
