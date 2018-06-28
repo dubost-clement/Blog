@@ -7,13 +7,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Reportage;
 use App\Repository\ReportageRepository;
 use App\Repository\CategoryRepository;
+use Symfony\Component\HttpFoundation\Request;
 
 class ReportageFrontController extends Controller
 {
     /**
      * @Route("/shooting/{slug}", name="personnel")
      */
-    public function shooting(ReportageRepository $repo, CategoryRepository $repoCategory, $slug)
+    public function shooting(ReportageRepository $repo, CategoryRepository $repoCategory, $slug, Request $request)
     {
         $categories = $repoCategory->findAll();
 
@@ -27,11 +28,19 @@ class ReportageFrontController extends Controller
             array('id' => 'desc')
         );
 
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $reportages, 
+            $request->query->getInt('page', 1),
+            5
+        );
+
         return $this->render('reportage/shooting.html.twig', [
             'controller_name' => 'ReportageFrontController',
             'reportages' => $reportages,
             'categories' => $categories,
-            'name' => $slug
+            'name' => $slug,
+            'pagination' => $pagination
         ]);
     }
 
@@ -46,28 +55,5 @@ class ReportageFrontController extends Controller
             'reportage' => $reportage,
             'categories' => $categories
         ]);
-    }
-
-    /**
-     * @Route("/sport", name="sport")
-     */
-    public function sport(ReportageRepository $repo)
-    {
-        $reportageSport = $repo->findByCategory('sport');
-        return $this->render('reportage/sport.html.twig',[
-            'controller_name' => 'ReportageFrontController',
-            'sports' => $reportageSport
-        ]);
-    }
-    
-    /**
-     * @Route("/sport/{id}", name="sport_show")
-     */
-    public function showSport(Reportage $reportage)
-    {
-        return $this->render('reportage/show-sport.html.twig',[
-            'controller_name' => 'ReportageFrontController',
-            'sport' => $reportage
-        ]);
-    }    
+    }   
 }
