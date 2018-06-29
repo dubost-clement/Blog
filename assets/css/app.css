@@ -91,7 +91,6 @@
 .pagination > .active > a:focus,
 .pagination > .active > span:focus{
     background-color: #2C3E50 !important;
-    color: #ffffff;
 }
 
 .pagination > li > a:hover,

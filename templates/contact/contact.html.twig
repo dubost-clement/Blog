@@ -3,8 +3,7 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-
-    <h1 class="text-center">Contactez moi</h1>
+    <h1 class="text-center my-5">Contactez moi</h1>
     <p class="p-3">N'hésitez pas à me contacter pour toutes demandes de shooting ou pour toutes autres questions
         Remplissez le formulaire de contact ci-dessous</p>
     {{ form_start(emailForm) }}
@@ -12,7 +11,7 @@
             {{ form_row(emailForm.email, {'attr': {'placeholder': "votre email"}}) }}
         </div>
         <div class="form-message p-3">
-            {{ form_row(emailForm.message, {'attr': {'placeholder': "votre message"}}) }}
+            {{ form_row(emailForm.message, {'attr': {'placeholder': "votre message", 'rows': 10}}) }}
         </div>
         <div class="form-envoyer p-3">
             {{ form_row(emailForm.envoyer, {'attr': {'class': "btn btn-primary"}}) }}

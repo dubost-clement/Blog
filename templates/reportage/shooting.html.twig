@@ -2,19 +2,31 @@
 {% block title %}Liste shooting  {{ name }}{% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Shooting {{ name }}</h1>
+    <h1 class="text-center mt-5">Shootings {{ name }}</h1>
     <section class="reportages">
-        {% for reportage in pagination %}
-            <article class="border m-2 m-md-4 p-2 p-md-3">
-                <h2>{{ reportage.title }}</h2>
-                <div class="metadata">Écrit le {{ reportage.createdAt | date('d/m/Y') }} à {{ reportage.createdAt | date('H:i') }}</div>
-                <div class="content">
-                    <p><img src="{{ vich_uploader_asset(reportage, 'imageFile') }}" class="img-fluid"alt="images de présentation des reportages"></p>
-                    <a href="{{ path('personnel_show', {'slug': reportage.category.name, 'id': reportage.id}) }}" class="btn btn-primary">Voir le reportage</a>
+        <div class="album py-5">
+            <div class="container">
+                <div class="row">
+                    {% for reportage in pagination %}
+                        <div class="col-sm-6 col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <img class=" img-fluid" src="{{ vich_uploader_asset(reportage, 'imageFile') }}" alt="{{ reportage.title }}">
+                                <div class="card-body">
+                                    <p>Écrit le {{ reportage.createdAt | date('d/m/Y') }}</p>
+                                    <h3>{{ reportage.title }}</h3>
+                                    <p class="card-text">{{ reportage.content | slice(0, 50) ~  ' ....'}}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <a href="#" role="button" class="btn btn-primary">Voir le reportage</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
-            </article>
-
-        {% endfor %}
+            </div>
+        </div>
     </section>
 
     <div class="navigation d-flex justify-content-center">
