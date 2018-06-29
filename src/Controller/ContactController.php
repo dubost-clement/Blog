@@ -38,6 +38,7 @@ class ContactController extends Controller
                     ->setBody($form->getData()['message'],'text/plain')
             ;
             $mailer->send($message);
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('contact/contact.html.twig',[

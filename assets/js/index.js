@@ -1,12 +1,4 @@
-const buttons = document.querySelectorAll(".btn-danger");
-buttons.forEach(function(button){
-    button.addEventListener("click", function(e){
-
-        if(!confirm("voulez vous vraiment supprimer ce reportage ?")){
-            e.preventDefault();
-        } 
-    
-    });
+const buttonConfirmation = document.querySelector(".confirm-message");
+buttonConfirmation.addEventListener("click", function(){
+    alert("Votre email a bien été envoyé");
 });
-
-

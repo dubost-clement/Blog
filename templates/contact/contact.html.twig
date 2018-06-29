@@ -14,7 +14,12 @@
             {{ form_row(emailForm.message, {'attr': {'placeholder': "votre message", 'rows': 10}}) }}
         </div>
         <div class="form-envoyer p-3">
-            {{ form_row(emailForm.envoyer, {'attr': {'class': "btn btn-primary"}}) }}
+            {{ form_row(emailForm.envoyer, {'attr': {'class': "btn btn-primary confirm-message"}}) }}
         </div>
     {{ form_end(emailForm) }}
 {% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/main.js') }}"></script>
+{% endblock %}
+        
