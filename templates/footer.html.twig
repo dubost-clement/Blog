@@ -1,0 +1,16 @@
+<footer class="footer-basic bg-primary mt-5">
+    <div class="social mt-3">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+    </div>
+    <ul class="list-inline">
+        <li class="list-inline-item"><a href="/">Accueil</a></li>
+        {% for category in categories %}
+            <li class="list-inline-item"><a href="{{ path('personnel', {'slug': category.name}) }}">{{ category.name }}</a></li>
+        {% endfor %}
+        <li class="list-inline-item"><a href="/contact">Contact</a></li>
+    </ul>
+    <p class="copiryght mb-2">© 2018 dubostclement.fr</p>
+</footer>

@@ -5,18 +5,22 @@
         <img src="{{asset('images/header.jpg')}}" class="img-fluid" alt="">
     </header>
 
-    <div class="last-sport">
-        {% for lastReportage in lastReportages %}
-            <h2 class="text-center my-3">Dernier shooting {{ lastReportage.category.name }}</h2>
-            <article class="border m-2 m-md-5 p-2 p-md-3">
-                <h3>{{ lastReportage.title }}</h3>
-                <div class="content">
-                    <img src="{{ vich_uploader_asset(lastReportage, 'imageFile') }}" class="img-fluid" alt="image illustration du reportage photo">
+    <div class="container-fluid">
+        <h1 class="text-center my-5">Derniers shootings</h1>
+        <div class="row">
+            {% for lastReportage in lastReportages %}
+                <div class="last-sport col-md-4 mx-auto">
+                    <article class="border p-2 p-md-3  card">
+                        <img src="{{ vich_uploader_asset(lastReportage, 'imageFile') }}" class="img-fluid card-img-top w-100 d-block" alt="image illustration du reportage photo">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ lastReportage.title }}</h3>
+                        </div>
+                        <p class="card-text">Écrit le {{ lastReportage.createdAt | date('d/m/Y') }} catégorie <a href="{{ path('personnel', {'slug': lastReportage.category.name}) }}">{{ lastReportage.category.name }}<a/></p>
+                        <a href="{{ path('personnel_show', {'slug': lastReportage.category.name, 'id': lastReportage.id}) }}" class="btn btn-primary w-50">Voir le reportage</a>
+                    </article>
                 </div>
-                <p class="metadata">Écrit le {{ lastReportage.createdAt | date('d/m/Y') }} catégorie <a href="{{ path('personnel', {'slug': lastReportage.category.name}) }}">{{ lastReportage.category.name }}<a/></p>
-                <a href="{{ path('personnel_show', {'slug': lastReportage.category.name, 'id': lastReportage.id}) }}" class="btn btn-primary">Voir le reportage</a>
-            </article>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 
 {% endblock %}
