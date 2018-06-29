@@ -8,15 +8,5 @@ use App\Repository\CategoryRepository;
 
 class AdminController extends Controller
 {
-    /**
-     * @Route("/administration", name="admin")
-     */
-    public function adminAction(CategoryRepository $repoCategory)
-    {
-        $categories = $repoCategory->findAll();
-        return $this->render('admin/admin.html.twig',[
-            'controller_name' => 'AdminController',
-            'categories' => $categories
-        ]);
-    }
+
 }
