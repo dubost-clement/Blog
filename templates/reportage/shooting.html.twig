@@ -17,7 +17,7 @@
                                     <p class="card-text">{{ reportage.content | slice(0, 50) ~  ' ....'}}</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <a href="#" role="button" class="btn btn-primary">Voir le reportage</a>
+                                            <a href="{{ path('personnel_show', {'slug': reportage.category.name, 'id': reportage.id}) }}" role="button" class="btn btn-primary">Voir le reportage</a>
                                         </div>
                                     </div>
                                 </div>
