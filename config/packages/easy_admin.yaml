@@ -9,21 +9,28 @@ easy_admin:
                   - { property: 'title', type: 'string', label: 'Titre' }
                   - { property: 'createdAt', format: 'd/m/Y', label: 'Date' }
                   - { property: 'category', label: 'Catégorie' }
-          form:
+          edit:
+              title: "modifications article"
               fields:
                   - { property: 'title', label: 'Titre' }
                   - { property: 'content', label: 'Contenu' }
-                  - { property: 'imageFile', type: 'vich_image', label: 'Image principale' }
-                  - { property: 'carouselFile1', type: 'vich_image', label: 'Image carousel 1' }
-                  - { property: 'carouselFile2', type: 'vich_image', label: 'Image carousel 2' }
-                  - { property: 'carouselFile3', type: 'vich_image', label: 'Image carousel 3' }
+                  - { property: 'imageFile', type: 'vich_image', label: 'Image principale', type_options: { required: false } }
+                  - { property: 'carouselFile1', type: 'vich_image', label: 'Image carousel 1', type_options: { required: false } }
+                  - { property: 'carouselFile2', type: 'vich_image', label: 'Image carousel 2', type_options: { required: false } }
+                  - { property: 'carouselFile3', type: 'vich_image', label: 'Image carousel 3', type_options: { required: false } }
                   - { property: 'createdAt', label: 'Date de création' }
-                  - { property: 'category', label: 'Catégorie' }
-          edit:
-              title: "modifications article"
+                  - { property: 'category', label: 'Catégorie' }                 
           new:
               title: "création article"
-
+              fields:
+                  - { property: 'title', label: 'Titre' }
+                  - { property: 'content', label: 'Contenu' }
+                  - { property: 'imageFile', type: 'vich_image', label: 'Image principale', type_options: { required: true } }
+                  - { property: 'carouselFile1', type: 'vich_image', label: 'Image carousel 1', type_options: { required: true } }
+                  - { property: 'carouselFile2', type: 'vich_image', label: 'Image carousel 2', type_options: { required: true } }
+                  - { property: 'carouselFile3', type: 'vich_image', label: 'Image carousel 3', type_options: { required: true } }
+                  - { property: 'createdAt', label: 'Date de création' }
+                  - { property: 'category', label: 'Catégorie' }
       Category:
           class: App\Entity\Category
           list:
@@ -33,7 +40,6 @@ easy_admin:
           form:
               fields:
                   - { property: 'name', label: 'Nom' }
-
       User:
           class: App\Entity\User
           list:
@@ -44,8 +50,7 @@ easy_admin:
               fields:
                   - { property: 'name', label: 'Nom' }
                   - { property: 'email' }
-                  - { property: 'passwd', label: 'mot de passe' }
-              
+                  - { property: 'passwd', label: 'mot de passe' }             
   design:
         brand_color: '#2C3E50'
         menu:
@@ -53,4 +58,3 @@ easy_admin:
           - { entity: 'Reportage', label: 'Reportages' }
           - { entity: 'Category', label: 'Catégories' }
           - { entity: 'User', label: 'Utilisateur' }
-

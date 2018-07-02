@@ -6,6 +6,7 @@ $(document).ready(function(){
         loop: true,
         nav: true,
         dots: false,
+        margin: 50,
         navText:["précédent","suivant"],
         responsiveClass:true,
         responsive: {

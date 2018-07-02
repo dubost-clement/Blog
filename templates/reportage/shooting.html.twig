@@ -9,8 +9,8 @@
                 <div class="row">
                     {% for reportage in pagination %}
                         <div class="col-sm-6 col-md-4">
-                            <div class="card mb-4 box-shadow">
-                                <img class=" img-fluid" src="{{ vich_uploader_asset(reportage, 'imageFile') }}" alt="{{ reportage.title }}">
+                            <div class="bordure-article mb-4 box-shadow">
+                                <img class=" img-fluid" src="{{ vich_uploader_asset(reportage, 'imageFile') }}" alt="image illustration {{ reportage.title }}">
                                 <div class="card-body">
                                     <p>Écrit le {{ reportage.createdAt | date('d/m/Y') }}</p>
                                     <h3>{{ reportage.title }}</h3>
