@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ReportageFrontController extends Controller
 {
     /**
-     * @Route("/shooting/{slug}", name="personnel")
+     * @Route("/shootings-{slug}", name="personnel")
      */
     public function shooting(ReportageRepository $repo, CategoryRepository $repoCategory, $slug, Request $request)
     {
@@ -45,7 +45,7 @@ class ReportageFrontController extends Controller
     }
 
     /**
-     * @Route("/shooting/{slug}/{id}", name="personnel_show")
+     * @Route("/shootings-{slug}/{id}", name="personnel_show")
      */
     public function showShooting(Reportage $reportage, CategoryRepository $repoCategory)
     {
