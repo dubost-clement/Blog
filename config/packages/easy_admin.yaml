@@ -44,13 +44,14 @@ easy_admin:
           class: App\Entity\User
           list:
               fields:
-                  - { property: 'name', label: 'Nom'}
+                  - { property: 'username', label: 'Nom'}
                   - { property: 'email' }
           form:
               fields:
-                  - { property: 'name', label: 'Nom' }
+                  - { property: 'username', label: 'Nom' }
                   - { property: 'email' }
-                  - { property: 'passwd', label: 'mot de passe' }             
+                  - { property: 'password', label: 'mot de passe' }
+          disabled_actions: ['new', 'delete']          
   design:
         brand_color: '#2C3E50'
         menu:
@@ -58,3 +59,4 @@ easy_admin:
           - { entity: 'Reportage', label: 'Reportages' }
           - { entity: 'Category', label: 'Catégories' }
           - { entity: 'User', label: 'Utilisateur' }
+          - { label: 'Déconnexion', route: 'security_logout' }
