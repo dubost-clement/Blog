@@ -11,16 +11,20 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use App\Repository\CategoryRepository;
-use App\Entity\User;
+use App\Repository\UserRepository;
 
 class ContactController extends Controller
 {
     /**
      * @Route("/contact", name="contact")
      */
-    public function contactForm(Request $request, \Swift_Mailer $mailer, CategoryRepository $repoCategory)
+    public function contactForm(Request $request, \Swift_Mailer $mailer, CategoryRepository $repoCategory, UserRepository $repoUser)
     {
         $categories = $repoCategory->findAll();
+
+        $user = $repoUser->findAll();
+        $userEmail = $user[0]->getEmail();
+
         $form = $this->createFormBuilder()
                     ->add('email', EmailType::class)
                     ->add('message', TextareaType::class)
@@ -34,7 +38,7 @@ class ContactController extends Controller
             $message = (new \Swift_Message)
                     ->setSubject('nouveau mail de votre site')
                     ->setFrom($data['email'])
-                    ->setTo('braunschweig.dubost@gmail.com')
+                    ->setTo($userEmail)
                     ->setBody($form->getData()['message'],'text/plain')
             ;
             $mailer->send($message);

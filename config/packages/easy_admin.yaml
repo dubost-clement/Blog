@@ -50,7 +50,6 @@ easy_admin:
               fields:
                   - { property: 'username', label: 'Nom' }
                   - { property: 'email' }
-                  - { property: 'password', label: 'mot de passe' }
           disabled_actions: ['new', 'delete']          
   design:
         brand_color: '#2C3E50'

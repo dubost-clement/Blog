@@ -14,30 +14,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class SecurityController extends Controller
 {
     /**
-     * @Route("/inscription", name="security_registration")
-     */
-    public function registration(CategoryRepository $repoCategory, Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
-    {
-        $categories = $repoCategory->findAll();
-        $user = new User();
-
-        $form = $this->createForm(RegistrationType::class, $user);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()) {
-            $hash = $encoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($hash);
-            $manager->persist($user);
-            $manager->flush();
-        }
-
-        return $this->render('security/registration.html.twig',[
-            'form' => $form->createView(),
-            'categories' => $categories
-        ]);
-    }
-
-    /**
      * @Route("/connexion", name="security_login")
      */
     public function login(CategoryRepository $repoCategory)

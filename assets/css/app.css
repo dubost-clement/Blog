@@ -203,3 +203,8 @@ body.overflow-hidden {
     width: 100%;
     max-width: 700px;
 }
+
+.size-img{
+    min-height: 230px;
+    
+}
