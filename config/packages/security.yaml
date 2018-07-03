@@ -2,6 +2,8 @@ security:
     encoders:
         App\Entity\User:
             algorithm: bcrypt
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: ~ }
@@ -9,6 +11,13 @@ security:
             entity:
                 class: App\Entity\User
                 property: username
+        in_test:
+            memory:
+                users:
+                    toto:
+                        password: $2y$13$tgb1a1k4LzsQzPbvL1PBGOMBJtb9696Rbi5KHRHumqqBKX2SLCXkm
+                        roles: 'ROLE_ADMIN'
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -16,7 +25,7 @@ security:
         main:
             anonymous: true
 
-            provider: in_database
+            provider: in_test
 
             form_login:
                 login_path: security_login
