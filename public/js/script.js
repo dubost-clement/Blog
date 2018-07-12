@@ -4,10 +4,9 @@ $(document).ready(function(){
         items:3,
         autoplay: true,
         loop: true,
-        nav: true,
+        nav: false,
         dots: false,
         margin: 50,
-        navText:["précédent","suivant"],
         responsiveClass:true,
         responsive: {
             0:{
