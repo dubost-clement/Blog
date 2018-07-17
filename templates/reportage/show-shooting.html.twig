@@ -10,7 +10,7 @@
 {% block body %}
     <article class="m-2 m-md-4 p-2 p-md-3 text-center">
         <h2>{{ reportage.title }}</h2>
-        <div class="metadata mb-3">Écrit le{{ reportage.createdAt | date('d/m/Y') }} à {{ reportage.createdAt | date('H:i') }}</div>
+        <div class="metadata mb-3">Écrit le {{ reportage.createdAt | date('d/m/Y') }} à {{ reportage.createdAt | date('H:i') }}</div>
         <div class="content">
             <img src="{{ vich_uploader_asset(reportage, 'imageFile') }}" class="img-fluid" alt="image illustration {{ reportage.title }}">
             <p class="my-5">{{ reportage.content }}</p>
